@@ -17,6 +17,8 @@ export const Backdrop = React.forwardRef<
   );
 });
 
+Backdrop.displayName = 'Backdrop';
+
 export const blue = {
   200: '#99CCFF',
   300: '#66B2FF',

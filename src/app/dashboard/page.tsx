@@ -1,6 +1,6 @@
 "use client"
 import "@/app/globals.css"
-import DashboardLayout from "./layout";
+import Image from "next/image";
 import { useState, useEffect, Suspense } from "react";
 import Loading from '@/app/dashboard/loading';
 import { Modal, StyledBackdrop, ModalContent, TriggerButton } from "@/components/modal";
@@ -35,7 +35,7 @@ async function getMovies() {
     await sleep(1500)
 
     try {
-        const res = await fetch("http://localhost:3001/movies")
+        const res = await fetch(`http://${process.env.NEXT_PUBLIC_NODEJS_BACKEND_URL}/movies`)
         if (!res.ok) {
             console.error("Failed to retrieve movies");
             return [];
@@ -51,7 +51,7 @@ async function getMovies() {
 
 async function getMovieStreamingOption(id: number, title: string, setMovieStreamingOption: Function, handleOpen: Function) {
     try {
-        const res = await fetch(`http://localhost:3001/movie/${id}/streaming-options`)
+        const res = await fetch(`http://${process.env.NEXT_PUBLIC_NODEJS_BACKEND_URL}/movie/${id}/streaming-options`)
         if (!res.ok) {
             console.error(`Failed to retrieve streaming option for movie ${title}`);
         }
@@ -112,13 +112,13 @@ export default function Home() {
                                         <div 
                                             className="p-8 bg-gradient-to-r from-gray-50 to-gray-100 shadow-lg rounded-lg space-y-4 my-2 break-inside-avoid transform transition duration-500 ease-in-out hover:-translate-y-2 hover:shadow-xl" 
                                         >
-                                            <img src={movie.poster_path} alt="poster image" className="rounded-md transition duration-500 ease-in-out transform shadow-md" />
+                                            <Image src={movie.poster_path} alt="poster image" className="rounded-md transition duration-500 ease-in-out transform shadow-md"></Image>
                                             <p className="text-2xl font-extrabold text-gray-900 tracking-wide hover:text-blue-600 transition duration-300">{movie.title}</p>
                                             <p className="text-base font-bold text-gray-800">Overview: <span className="font-normal text-gray-600">{movie.overview}</span></p>
                                             <p className="text-base font-bold text-gray-800">Popularity: <span className="font-normal text-gray-600">{movie.popularity}</span></p>
                                             <p className="text-base font-bold text-gray-800">Release Date: <span className="font-normal text-gray-600">{movie.release_date}</span></p>
                                             <p className="text-base font-bold text-gray-800">Vote Average: <span className="font-normal text-gray-600">{movie.vote_average} / 10</span></p>
-                                            <p className="text-base font-bold text-gray-800">Vote Count: <span className="font-normal text-gray-600">{movie.vote_count}</span></p>
+                                            <p className="text-base font-bold text-gray-800">Vote Count: <span className="font-normal text-gray-600">{movie.vote_count}</span></p>        
                                         </div>
                                     </TriggerButton>
                                     <Modal
@@ -143,22 +143,12 @@ export default function Home() {
                                             'WebkitOverflowScrolling': 'touch',  // Smooth scrolling for touch devices
                                             }}
                                         >
-                                            {/* Movie Poster */}
-                                            {/* {movieStreamingOption.imageSet?.verticalPoster?.w240 ? (
-                                                <img
-                                                    src={movieStreamingOption.imageSet.verticalPoster.w240}
-                                                    alt={`${movieStreamingOption.title} Poster`}
-                                                    style={{ width: '100%', borderRadius: '8px' }}
-                                                />
-                                                ) : (
-                                                <div style={{ height: '360px', backgroundColor: '#ccc', borderRadius: '8px' }} />
-                                            )} */}
                                             <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '5px' }}>
-                                                <img
+                                                <Image 
                                                     src={movie.poster_path}
                                                     alt={`${movieStreamingOption.title} Poster`}
-                                                    style={{ width: '100%', maxWidth: '300px', borderRadius: '8px' }}
-                                                />
+                                                    style={{ width: '100%', maxWidth: '300px', borderRadius: '8px' }}>
+                                                </Image>
                                             </div>
 
                                             {/* Movie Title and Release Year */}

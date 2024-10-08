@@ -2,16 +2,11 @@
 
 import Link from 'next/link';
 import "@/app/globals.css";
-import { redirect } from 'next/navigation'
 import { useRouter } from 'next/navigation';
 import Spline from '@splinetool/react-spline';
 
 export default function Main() {
     const router = useRouter();
-
-    const redirectToLinkedIn = () => {
-        router.push("https://www.linkedin.com/in/brian-cheong-computer-software/")
-    }
 
     return (
         <div className="text-center p-10 items-center justify-center">
