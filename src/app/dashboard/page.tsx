@@ -35,7 +35,7 @@ async function getMovies() {
     await sleep(1500)
 
     try {
-        const res = await fetch(`http://${process.env.NEXT_PUBLIC_NODEJS_BACKEND_URL}/movies`)
+        const res = await fetch(`https://${process.env.NEXT_PUBLIC_NODEJS_BACKEND_URL}/movies`)
         if (!res.ok) {
             console.error("Failed to retrieve movies");
             return [];
@@ -51,7 +51,7 @@ async function getMovies() {
 
 async function getMovieStreamingOption(id: number, title: string, setMovieStreamingOption: Function, handleOpen: Function) {
     try {
-        const res = await fetch(`http://${process.env.NEXT_PUBLIC_NODEJS_BACKEND_URL}/movie/${id}/streaming-options`)
+        const res = await fetch(`https://${process.env.NEXT_PUBLIC_NODEJS_BACKEND_URL}/movie/${id}/streaming-options`)
         if (!res.ok) {
             console.error(`Failed to retrieve streaming option for movie ${title}`);
         }
