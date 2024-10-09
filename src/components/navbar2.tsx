@@ -1,8 +1,21 @@
-import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Input, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, Avatar} from "@nextui-org/react";
-import {AcmeLogo} from "@/components/AcmeLogo";
-import {SearchIcon} from "@/components/SearchIcon";
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+  Link,
+  Input,
+  DropdownItem,
+  DropdownTrigger,
+  Dropdown,
+  DropdownMenu,
+  Avatar,
+} from "@nextui-org/react";
+import { AcmeLogo } from "@/components/AcmeLogo";
+import { SearchIcon } from "@/components/SearchIcon";
+import "@/app/globals.css";
 
-export default function NavbarTwo () {
+export default function NavbarTwo() {
   return (
     <Navbar isBordered>
       <NavbarContent justify="start">
@@ -49,15 +62,15 @@ export default function NavbarTwo () {
               as="button"
               className="transition-transform"
               color="secondary"
-              name="Jason Hughes"
+              name="Brian Cheong"
               size="sm"
-              src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+              src="https://image.tmdb.org/t/p/w154/qbkAqmmEIZfrCO8ZQAuIuVMlWoV.jpg"
             />
           </DropdownTrigger>
           <DropdownMenu aria-label="Profile Actions" variant="flat">
             <DropdownItem key="profile" className="h-14 gap-2">
               <p className="font-semibold">Signed in as</p>
-              <p className="font-semibold">zoey@example.com</p>
+              <p className="font-semibold">brian.cheong@gmail.com</p>
             </DropdownItem>
             <DropdownItem key="settings">My Settings</DropdownItem>
             <DropdownItem key="team_settings">Team Settings</DropdownItem>
