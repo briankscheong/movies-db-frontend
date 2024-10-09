@@ -83,8 +83,8 @@ export default function Home() {
             })
             .then(results => {
                 results.forEach((result: MovieResult) => {
-                    result.poster_path = `http://image.tmdb.org/t/p/w342${result.poster_path}`;
-                    result.smaller_poster_path = `http://image.tmdb.org/t/p/w154${result.poster_path}`;
+                    result.poster_path = `https://image.tmdb.org/t/p/w342${result.poster_path}`;
+                    result.smaller_poster_path = `https://image.tmdb.org/t/p/w154${result.poster_path}`;
                 })
                 setMovies(results)
                 setLoading(false);
