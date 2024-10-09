@@ -1,11 +1,12 @@
 import React from 'react';
 import Navbar from '@/components/navbar';
+import NavbarTwo from '@/components/navbar2';
 
 const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <div>
         <div className="flex flex-col">
-            <Navbar />
+            <NavbarTwo />
         </div>
         <main className="flex-grow p-4 bg-slate-100">
             {children}

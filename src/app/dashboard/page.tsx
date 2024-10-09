@@ -35,7 +35,7 @@ async function getMovies() {
     await sleep(1500)
 
     try {
-        const res = await fetch(`https://${process.env.NEXT_PUBLIC_NODEJS_BACKEND_URL}/movies`)
+        const res = await fetch(`http://${process.env.NEXT_PUBLIC_NODEJS_BACKEND_URL}/movies`)
         if (!res.ok) {
             console.error("Failed to retrieve movies");
             return [];
@@ -112,7 +112,7 @@ export default function Home() {
                                         <div 
                                             className="p-8 bg-gradient-to-r from-gray-50 to-gray-100 shadow-lg rounded-lg space-y-4 my-2 break-inside-avoid transform transition duration-500 ease-in-out hover:-translate-y-2 hover:shadow-xl" 
                                         >
-                                            <Image src={movie.poster_path} alt="poster image" className="rounded-md transition duration-500 ease-in-out transform shadow-md"></Image>
+                                            <Image src={movie.poster_path} width={ "60" } height={ "70"} alt="poster image" className="rounded-md transition duration-500 ease-in-out transform shadow-md"></Image>
                                             <p className="text-2xl font-extrabold text-gray-900 tracking-wide hover:text-blue-600 transition duration-300">{movie.title}</p>
                                             <p className="text-base font-bold text-gray-800">Overview: <span className="font-normal text-gray-600">{movie.overview}</span></p>
                                             <p className="text-base font-bold text-gray-800">Popularity: <span className="font-normal text-gray-600">{movie.popularity}</span></p>
